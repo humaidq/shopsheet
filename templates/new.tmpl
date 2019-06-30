@@ -1,0 +1,15 @@
+{{ template "base/head" .}}
+<div class="container">
+<h1 class="title">Create a new site</h1>
+<form action="post">
+<p>Site name: <input type="text" name="site_name" /></p>
+<p>Site description: <textarea rows="2" type="text" name="site_desc"></textarea></p>
+<p>Email: <input type="email" name="email" /></p>
+<p>Logo URL: <input type="text" name="logo_url" /></p>
+<p>Banner URL: <input type="text" name="banner_url" /></p>
+<p>Spreadsheet file: <input type="file" name="spreadsheet" /></p>
+<br>
+<button type="submit" class="btn">Create!</button>
+</form>
+</div>
+{{ template "base/footer" .}}

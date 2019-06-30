@@ -1,0 +1,49 @@
+/* Page style */
+body {
+  font-family: 'Roboto', 'Lucidia Grande', sans-serif;
+  font-size: 1.4em;
+  margin: 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+.container {
+  max-width: 960px;
+  position: relative;
+  margin: 0 auto;
+}
+
+a:focus {
+  outline: 2.5pt solid #ffbf47;
+}
+
+
+/* Typography */
+.title {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 0 30px 0 30px
+}
+
+.btn {
+  display: inline-block;
+  background-color: #1368f4;
+  color: #fff;
+  border: 1px solid black;
+  padding: 2px 5px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  text-decoration: underline;
+  outline: 2.5pt solid #ffbf47;
+}
+
+input[type=text], input[type=email], textarea {
+  border-radius: 0px;
+  border: 1px solid black;
+  padding: 2px 5px;
+}
