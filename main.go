@@ -39,8 +39,9 @@ func main() {
 		ssPath := fmt.Sprintf("%s/%s", dir, form.Spreadsheet.Filename)
 		ioutil.WriteFile(ssPath, buf.Bytes(), 0644)
 
+		fmt.Println(ssPath)
 		var csv string
-		csv, err = spreadsheet.GetCSVFromSpreadsheet(ssPath)
+		csv, err = spreadsheet.GetCSVFromSpreadsheet(ssPath, dir)
 		if err != nil {
 			ctx.PlainText(400, []byte(fmt.Sprintf("Failed to convert into CSV file: %s", err)))
 			return
@@ -75,17 +76,9 @@ func main() {
 				ctx.PlainText(404, []byte("Site instance does not exist!"))
 				return
 			}
-			fillShopData(ctx, shop)
+			fillShopData(ctx, shop, ctx.Params("site"))
+			ctx.Data["IsIndex"] = 1
 			ctx.HTML(200, "site/index")
-		})
-		m.Get("/:prod", func(ctx *macaron.Context) {
-			shop, ok := models.Shops[ctx.Params("site")]
-			if !ok {
-				ctx.PlainText(404, []byte("Site instance does not exist!"))
-				return
-			}
-			fillShopData(ctx, shop)
-			ctx.HTML(200, "site/view_prod")
 		})
 		m.Get("/cart", func(ctx *macaron.Context) {
 			shop, ok := models.Shops[ctx.Params("site")]
@@ -93,17 +86,19 @@ func main() {
 				ctx.PlainText(404, []byte("Site instance does not exist!"))
 				return
 			}
-			fillShopData(ctx, shop)
+			fillShopData(ctx, shop, ctx.Params("site"))
+			ctx.Data["IsCart"] = 1
 			ctx.HTML(200, "site/cart")
 		})
 	})
 	m.Run()
 }
 
-func fillShopData(ctx *macaron.Context, shop models.ShopSite) {
+func fillShopData(ctx *macaron.Context, shop models.ShopSite, inst string) {
 	ctx.Data["Title"] = shop.SiteTitle
 	ctx.Data["Description"] = shop.SiteDescription
 	ctx.Data["LogoURL"] = shop.LogoURL
 	ctx.Data["BannerURL"] = shop.BannerURL
 	ctx.Data["Items"] = shop.Items
+	ctx.Data["Inst"] = inst
 }

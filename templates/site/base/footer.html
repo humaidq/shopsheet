@@ -1,0 +1,82 @@
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/js/mdb.min.js"></script>
+
+	{{ if .IsIndex }} <script>
+        $(document).ready(function () {
+
+            if (localStorage.getItem("items") === null) {
+                console.log("here");
+                var arr = new Array();
+                localStorage.setItem("items", JSON.stringify(arr));
+              
+            }
+        });
+         
+        function additem(name, price) {
+                var data = { 'name': name, 'price': price };
+                var arr_json = JSON.parse(localStorage.getItem("items"));
+                console.log(typeof(arr_json));
+                arr_json.push(data);
+                localStorage.setItem("items",JSON.stringify(arr_json));
+                console.log(JSON.parse(localStorage.getItem("items")));
+            }
+	</script>{{end}}
+	{{ if .IsCart }}<script>
+    $(document).ready(function () {
+        var arr_json = JSON.parse(localStorage.getItem("items"));
+        $("#table").html("");
+        var receipt = "<textarea name=\"purchases\">";
+        var sum = 0;
+        for (var i = 0; i < arr_json.length; i++) {
+            $("#table").append(`<tr>
+              <td>`+ arr_json[i].name + `</td>
+              <td>`+ arr_json[i].price + `</td>
+               <td><button class="btn btn-red btn-sm" onclick="delete_item(`+ i + `)"><i class="fa fa-window-close" aria-hidden="true"></i></button></td>
+              </tr>
+         `);
+         receipt += "\n"+arr_json[i].name + " - " + arr_json[i].price + "\n";
+         sum += arr_json[i].price;
+     
+        }
+        receipt += "\n\nSum: "+sum+"\n</textarea>";
+        console.log(receipt);
+        $("#receipt").html(receipt);
+    });
+
+    function delete_item(id) {
+        $("#table").html("");
+        var arr_json = JSON.parse(localStorage.getItem("items"));
+        if (id > -1) {
+            arr_json.splice(id, 1);
+        }
+        console.log(id);
+        localStorage.setItem("items", JSON.stringify(arr_json));
+        console.log(JSON.parse(localStorage.getItem("items")));
+        console.log(arr_json.length);
+        var receipt = "<textarea name=\"purchases\">";
+        var sum = 0;
+        $("#receipt").html("");
+        for (var i = 0; i < arr_json.length; i++) {
+            $("#table").append(`<tr>
+              <td>`+ arr_json[i].name + `</td>
+              <td>`+ arr_json[i].price + `</td>
+               <td><button class="btn btn-red btn-sm" onclick="delete_item(`+ i + `)"><i class="fa fa-window-close" aria-hidden="true"></i></button></td>
+              </tr>
+         `);
+         receipt += "\n"+arr_json[i].name + " - " + arr_json[i].price + "\n";
+         sum += arr_json[i].price;
+     
+        }
+        receipt += "\n\nSum: "+sum+"\n</textarea>";
+        $("#receipt").html(receipt);
+        console.log(receipt);
+    }
+	</script> {{end}}
+</body>
+
+</html>
