@@ -8,7 +8,7 @@ import (
 // a new website.
 type NewForm struct {
 	SiteName        string                `form:"site_name" binding:"Required"`
-	SiteDescription string                `form:"site_description" binding:"Required"`
+	SiteDescription string                `form:"site_desc" binding:"Required"`
 	Email           string                `form:"email" binding:"Required;Email"`
 	LogoURL         string                `form:"logo_url" binding:"Required;Url"`
 	BannerURL       string                `form:"banner_url" binding:"Required;Url"`
