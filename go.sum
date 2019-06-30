@@ -1,5 +1,7 @@
 github.com/Unknwon/com v0.0.0-20190321035513-0fed4efef755 h1:1B7wb36fHLSwZfHg6ngZhhtIEHQjiC5H4p7qQGBEffg=
 github.com/Unknwon/com v0.0.0-20190321035513-0fed4efef755/go.mod h1:voKvFVpXBJxdIPeqjoJuLK+UVcRlo/JLjeToGxPYu68=
+github.com/go-macaron/binding v0.0.0-20170611065819-ac54ee249c27 h1:ieTTL9+RAtpcMaskwWNN19Vdrsl4X+k2CWsQijWNsAU=
+github.com/go-macaron/binding v0.0.0-20170611065819-ac54ee249c27/go.mod h1:u+H6rwW+HQwUL+w5uaEJSpIlVZDye1o9MB4Su0JfRfM=
 github.com/go-macaron/inject v0.0.0-20160627170012-d8a0b8677191 h1:NjHlg70DuOkcAMqgt0+XA+NHwtu66MkTVVgR4fFWbcI=
 github.com/go-macaron/inject v0.0.0-20160627170012-d8a0b8677191/go.mod h1:VFI2o2q9kYsC4o7VP1HrEVosiZZTd+MVT3YZx4gqvJw=
 github.com/gopherjs/gopherjs v0.0.0-20181103185306-d547d1d9531e/go.mod h1:wJfORRmW1u3UXTncJ5qlYoELFm8eSnnEO6hX4iZ3EWY=
