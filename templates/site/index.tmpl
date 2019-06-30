@@ -26,37 +26,55 @@
         <![endif]-->
 
     <section id="">
-        <nav class="navbar navbar-dark black">
-            <a class="navbar-brand" href="#">
-                <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30"
-                    class="d-inline-block align-top" alt="mdb logo"> Bootstrap
-            </a>
-        </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark black">
+                    <a class="navbar-brand" href="/">
+                            <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" class="d-inline-block align-top"
+                              alt="mdb logo"> Bootstrap
+                          </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/">Products</a>
+                        </li>
+                  
+                    </ul>
+                        <ul class="navbar-nav ml-auto nav-flex-icons">
+                        <li class="nav-item">
+                          <a class="nav-link" href="/cart">Cart</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
     </section>
     <section class="view">
 
         <div class="row">
-    
-          <div class="col-md-12">
-    
-            <div class="view">
-              <img src="https://images.pexels.com/photos/325045/pexels-photo-325045.jpeg" class="img-fluid"  style="height:50vh; width:100%" alt="smaple image">
-              <div class="mask flex-center hm-gradient">
-              </div>
+
+            <div class="col-md-12">
+
+                <div class="view">
+                    <img src="https://images.pexels.com/photos/325045/pexels-photo-325045.jpeg" class="img-fluid"
+                        style="height:50vh; width:100%" alt="smaple image">
+                    <div class="mask flex-center hm-gradient">
+                    </div>
+                </div>
+
             </div>
-    
-          </div>
-    
+
         </div>
-    
-      </section>
+
+    </section>
 
     <section class="container">
         <!-- Section heading -->
         <div class="text-center">
-        <h2 class="h1-responsive font-weight-bold my-5">Products</h2>
-        <!-- Section description -->
-        <p class="grey-text w-responsive mx-auto mb-5">Description</p>
+            <h2 class="h1-responsive font-weight-bold my-5">Products</h2>
+            <!-- Section description -->
+            <p class="grey-text w-responsive mx-auto mb-5">Description</p>
         </div>
 
         <!-- Grid row -->
@@ -94,35 +112,35 @@
                 </div>
                 <!--Excerpt-->
                 <div class="card-body pb-0">
-                    <h4 class="font-weight-bold my-3">Title</h4>
+                    <h4 class="font-weight-bold my-3" id="item-1">Title</h4>
                     <p class="grey-text">Description
                     </p>
-                    <a class="btn btn-black btn-sm">Buy</a>
+                    <button class="btn btn-black btn-sm" onclick=" additem('item-1',12) ">Buy</button>
                 </div>
             </div>
             <!-- Grid column -->
             <!-- Grid column -->
 
-           <!-- Grid column -->
-           <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
-            <!--Featured image-->
-            <div class="view overlay rounded z-depth-1">
-                <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid"
-                    alt="Sample project image">
-                <a>
-                    <div class="mask rgba-white-slight"></div>
-                </a>
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+                <!--Featured image-->
+                <div class="view overlay rounded z-depth-1">
+                    <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid"
+                        alt="Sample project image">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!--Excerpt-->
+                <div class="card-body pb-0">
+                    <h4 class="font-weight-bold my-3">Title</h4>
+                    <p class="grey-text">Description
+                    </p>
+                    <h5 class="font-weight-bold">Price : 12</h5>
+                    <a class="btn btn-black btn-sm">Buy</a>
+                </div>
             </div>
-            <!--Excerpt-->
-            <div class="card-body pb-0">
-                <h4 class="font-weight-bold my-3">Title</h4>
-                <p class="grey-text">Description
-                </p>
-                <h5 class="font-weight-bold">Price : 12</h5>
-                <a class="btn btn-black btn-sm">Buy</a>
-            </div>
-        </div>
-        <!-- Grid column -->
+            <!-- Grid column -->
             <!-- Grid column -->
     </section>
 
@@ -137,6 +155,37 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/js/mdb.min.js"></script>
+
+    <!--Custom JS scripts-->
+    <script>
+
+        $(document).ready(function () {
+
+            if (localStorage.getItem("items") === null) {
+                console.log("here");
+                var arr = new Array();
+                localStorage.setItem("items", JSON.stringify(arr));
+              
+            }
+            //localStorage.clear();
+         
+            
+           
+
+        });
+         
+        function additem(name, price) {
+                var data = { 'name': name, 'price': price };
+                var arr_json = JSON.parse(localStorage.getItem("items"));
+                console.log(typeof(arr_json));
+                arr_json.push(data);
+                localStorage.setItem("items",JSON.stringify(arr_json));
+                console.log(JSON.parse(localStorage.getItem("items")));
+            }
+
+
+
+    </script>
 </body>
 
 </html>
