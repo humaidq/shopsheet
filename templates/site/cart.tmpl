@@ -29,7 +29,7 @@
         <!--Table-->
 </section>
 
-<form method="POST" action="/">
+<form method="POST" action="https://formspree.io/{{.Email}}">
     <!--Code for the modal-->
     <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
@@ -49,23 +49,24 @@
 
                         Total: 6 AED
                     </textarea>-->
+					
                     </div>
                     <div class=" md-form mb-5 text-center">
                         <h3>We only accept cash on delivery</h3>
                     </div>
                     <div class="md-form mb-5">
-                        <input type="text" id="form34" class="form-control validate">
+                        <input type="text" id="form34" class="form-control validate" name="name">
                         <label data-error="wrong" data-success="right" for="form34">Your name</label>
                     </div>
 
                     <div class="md-form mb-5">
-                        <input type="email" id="form29" class="form-control validate">
+                        <input type="email" id="form29" class="form-control validate" name="email">
                         <label data-error="wrong" data-success="right" for="form29">Your email</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-pencil prefix grey-text"></i>
-                        <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
+                        <textarea type="text" id="form8" class="md-textarea form-control" rows="4" name="shipping-information"></textarea>
                         <label data-error="wrong" data-success="right" for="form8">Shipping Information</label>
                     </div>
 

@@ -99,6 +99,7 @@ func fillShopData(ctx *macaron.Context, shop models.ShopSite, inst string) {
 	ctx.Data["Description"] = shop.SiteDescription
 	ctx.Data["LogoURL"] = shop.LogoURL
 	ctx.Data["BannerURL"] = shop.BannerURL
+	ctx.Data["Email"] = shop.Email
 	ctx.Data["Items"] = shop.Items
 	ctx.Data["Inst"] = inst
 }

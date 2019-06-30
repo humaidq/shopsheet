@@ -1,6 +1,6 @@
-/* Page style */
+@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
 body {
-  font-family: 'Roboto', 'Lucidia Grande', sans-serif;
+  font-family: 'Merriweather', 'Roboto', sans-serif;
   font-size: 1.4em;
   margin: 0;
 }
@@ -19,8 +19,6 @@ a:focus {
   outline: 2.5pt solid #ffbf47;
 }
 
-
-/* Typography */
 .title {
   text-align: center;
   margin-top: 30px;
