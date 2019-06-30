@@ -1,32 +1,37 @@
 package models
 
 import (
-	"strings"
+	"encoding/csv"
 	"errors"
 	"fmt"
-	"encoding/csv"
 	"strconv"
+	"strings"
 )
 
+// Shops is the list of all running shop sites in the instance.
+var Shops map[string]ShopSite
 
 // ShopSite represents an shop site instance.
 type ShopSite struct {
-	InstanceID string
-	SiteTitle string
+	SiteTitle       string
 	SiteDescription string
-	Email string
-	LogoURL string
-	BannerURL string
-	Items []ShopItem
+	Email           string
+	LogoURL         string
+	BannerURL       string
+	Items           []ShopItem
 }
 
 // ShopItem represents an item in the shop.
 type ShopItem struct {
-	ID string
-	Name string
+	ID          string
+	Name        string
 	Description string
-	Price float64
-	ImageURL string
+	Price       float64
+	ImageURL    string
+}
+
+func init() {
+	Shops = make(map[string]ShopSite)
 }
 
 // GetShopItemsFromCSV marshalls the shop items listed in a CSV
@@ -44,7 +49,7 @@ func GetShopItemsFromCSV(csvText string) ([]ShopItem, error) {
 			if len(rec) != 5 || rec[0] != "ID" || rec[1] != "Name" ||
 				rec[2] != "Description" || rec[3] != "Price" ||
 				rec[4] != "Image URL" {
-					return nil, errors.New(fmt.Sprintf("Invalid spreadsheet schema: %s", rec))
+				return nil, errors.New(fmt.Sprintf("Invalid spreadsheet schema: %s", rec))
 			}
 			continue
 		}
@@ -67,11 +72,11 @@ func GetShopItemsFromCSV(csvText string) ([]ShopItem, error) {
 		}
 
 		items = append(items, ShopItem{
-			ID: rec[0],
-			Name: rec[1],
+			ID:          rec[0],
+			Name:        rec[1],
 			Description: rec[2],
-			Price: price,
-			ImageURL: imgURL,
+			Price:       price,
+			ImageURL:    imgURL,
 		})
 	}
 

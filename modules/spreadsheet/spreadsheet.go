@@ -1,9 +1,9 @@
 package spreadsheet
 
 import (
-	"os/exec"
-	"io/ioutil"
 	"fmt"
+	"io/ioutil"
+	"os/exec"
 	"strings"
 )
 
